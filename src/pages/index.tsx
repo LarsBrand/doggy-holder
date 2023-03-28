@@ -4,12 +4,13 @@ import type { HeadFC, PageProps } from "gatsby"
 import { WelcomeHeader } from "../components/WelcomeHeader";
 import { DoggyCompanion } from "../components/DoggyCompanion";
 import { useRandomBackgroundColor } from "../hooks/useRandomBackgroundColor";
-import { useInitializeAnimationClasses } from "../hooks/useInitializeAnimationClasses";
+import { useInitializeAnimation } from "../hooks/useInitializeAnimation";
 
 const pageStyles = {}
 
 const IndexPage: React.FC<PageProps> = () => {
   useRandomBackgroundColor()
+  useInitializeAnimation()
   return (
     <main style={pageStyles}>
       <DoggyCompanion />
@@ -20,10 +21,9 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => {
-  const classesToApply =  useInitializeAnimationClasses()
+export const Head: HeadFC = () => {  
   return <>
     <title>Doggy-Holder 🐶</title>
-    <body className={classesToApply} />
+    <body className='before-animate' />
   </>
 }
