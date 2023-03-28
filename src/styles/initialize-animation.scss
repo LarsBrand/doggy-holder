@@ -1,0 +1,9 @@
+body {
+  &.before-animate {
+    clip-path: circle(1%);
+    &.on-animate {
+      clip-path: circle(100%);
+      transition: clip-path 1s;
+    }
+  }
+}
