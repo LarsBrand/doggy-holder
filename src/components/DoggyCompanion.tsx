@@ -19,13 +19,14 @@ export const DoggyCompanion = () => {
                         </div>
                     </div>
                 </div>
-                <div className="back-stripe-1"></div>
+                <div className="stripes back-1"></div>
             </div>
             <div className="dog-torso">
-                <div className="back-stripe-2"></div>
+                <div className="stripes back-2"></div>
             </div>
             <div className="dog-head">
-                <div className="face-stripe-1"></div>
+                <div className="stripes face-1"></div>
+                <div className="stripes face-2"></div>
                 <div className="dog-ears">
                     <div className="dog-ear"></div>
                     <div className="dog-ear"></div>
@@ -35,7 +36,7 @@ export const DoggyCompanion = () => {
                     <div className="dog-eye"></div>
                 </div>
                 <div className="dog-muzzle">
-                    <div className="face-stripe-2"></div>
+                    <div className="stripes face-3"></div>
                     <div className="dog-nose"></div>
                     <div className="dog-sniff"></div>
                 </div>

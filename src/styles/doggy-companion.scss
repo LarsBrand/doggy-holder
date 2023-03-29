@@ -37,7 +37,7 @@ $easing: ease-in-out;
 
 .dog-body {
   top: -50%;
-  animation: dog-body $dog-animation-speed/$dog-happy-speed $easing infinite alternate;
+  animation: dog-body calc($dog-animation-speed/$dog-happy-speed) $easing infinite alternate;
 
   &:before {
     content: "";
@@ -51,8 +51,8 @@ $easing: ease-in-out;
     border-top-right-radius: 10%;
     background: rgba($color-dog-main, 0.4);
     transform-origin: right bottom;
-    animation: dog-tail-blur $dog-animation-speed/$dog-happy-speed $dog-animation-speed / 6 $easing infinite alternate
-      both;
+    animation: dog-tail-blur calc($dog-animation-speed/$dog-happy-speed) calc($dog-animation-speed / 6) $easing infinite
+      alternate both;
 
     @keyframes dog-tail-blur {
       from {
@@ -80,7 +80,7 @@ $easing: ease-in-out;
 }
 
 .dog-head {
-  animation: dog-head $dog-animation-speed * $dog-head-speed cubic-bezier(0.11, 0.79, 0, 0.99) infinite;
+  animation: dog-head calc($dog-animation-speed * $dog-head-speed) cubic-bezier(0.11, 0.79, 0, 0.99) infinite;
 
   @keyframes dog-head {
     from,
@@ -101,7 +101,7 @@ $easing: ease-in-out;
 
 .dog-torso {
   top: -20%;
-  animation: dog-torso $dog-animation-speed/$dog-happy-speed $easing infinite alternate-reverse;
+  animation: dog-torso calc($dog-animation-speed/$dog-happy-speed) $easing infinite alternate-reverse;
 
   @keyframes dog-torso {
     from {
@@ -127,7 +127,7 @@ $easing: ease-in-out;
   border-radius: 50%;
   background: #000;
   z-index: 2;
-  animation: dog-eye $dog-animation-speed * $dog-eye-speed infinite;
+  animation: dog-eye calc($dog-animation-speed * $dog-eye-speed) infinite;
   box-shadow: inset 0px -2px 0px 0px #ab0000, inset 0px 0.5px 0px 0px #fff;
 
   @keyframes dog-eye {
@@ -201,28 +201,28 @@ $easing: ease-in-out;
   left: calc(34%);
   z-index: 1;
   transform-origin: center top;
-  animation: dog-tongue $dog-animation-speed * $dog-tongue-speed -50ms ease-in-out infinite;
+  animation: dog-tongue calc($dog-animation-speed * $dog-tongue-speed) -50ms ease-in-out infinite;
 
   @keyframes dog-tongue {
     from,
     to {
       transform: rotate(0);
     }
-    #{p(1/32)},
-    #{p(25/32)} {
+    #{p(calc(1/32))},
+    #{p(calc(25/32))} {
       transform: rotate(20deg);
     }
-    #{p(3/32)},
-    #{p(8/32)},
-    #{p(13/32)},
-    #{p(16/32)},
-    #{p(19/32)},
-    #{p(24/32)},
-    #{p(27/32)} {
+    #{p(calc(3/32))},
+    #{p(calc(8/32))},
+    #{p(calc(13/32))},
+    #{p(calc(16/32))},
+    #{p(calc(19/32))},
+    #{p(calc(24/32))},
+    #{p(calc(27/32))} {
       transform: rotate(0);
     }
-    #{p(17/32)},
-    #{p(9/32)} {
+    #{p(calc(17/32))},
+    #{p(calc(9/32))} {
       transform: rotate(-20deg);
     }
   }
@@ -236,7 +236,7 @@ $easing: ease-in-out;
     border-radius: 40px;
 
     background: #fd3163;
-    animation: dog-tongue-inner $dog-animation-speed  $easing infinite alternate;
+    animation: dog-tongue-inner $dog-animation-speed $easing infinite alternate;
 
     @keyframes dog-tongue-inner {
       from {
@@ -270,7 +270,7 @@ $easing: ease-in-out;
     box-shadow: inset -7px 28px 0px -4px $color-dog-accent;
     transform-origin: right bottom;
     transform: rotate(-140deg) skew(10deg, 0deg);
-    animation: dog-ear-left $dog-animation-speed * $dog-head-speed ease infinite;
+    animation: dog-ear-left calc($dog-animation-speed * $dog-head-speed) ease infinite;
   }
 
   &:last-child {
@@ -280,7 +280,7 @@ $easing: ease-in-out;
     box-shadow: inset 7px 28px 0px -4px $color-dog-accent;
     transform-origin: left bottom;
     transform: rotate(140deg) skew(-10deg, 0deg);
-    animation: dog-ear-right $dog-animation-speed * $dog-head-speed ease infinite;
+    animation: dog-ear-right calc($dog-animation-speed * $dog-head-speed) ease infinite;
   }
 
   @keyframes dog-ear-left {
@@ -341,12 +341,12 @@ $easing: ease-in-out;
   height: $tail-width * 1.1;
   background: $color-dog-main;
   bottom: 40%;
-  border-radius: $tail-width / 2;
-  left: calc(50% - #{$tail-width / 2});
+  border-radius: calc($tail-width / 2);
+  left: calc(50% - #{calc($tail-width / 2)});
   transform-origin: center bottom;
 
   .dog-tail {
-    animation: dog-tail-segment $dog-animation-speed/$dog-happy-speed $easing infinite alternate;
+    animation: dog-tail-segment calc($dog-animation-speed / $dog-happy-speed) $easing infinite alternate;
 
     @keyframes dog-tail-segment {
       from {
@@ -361,7 +361,7 @@ $easing: ease-in-out;
 
 .dog-body > .dog-tail {
   bottom: 90%;
-  animation: dog-tail $dog-animation-speed/$dog-happy-speed $easing infinite alternate;
+  animation: dog-tail calc($dog-animation-speed/$dog-happy-speed) $easing infinite alternate;
 
   @keyframes dog-tail {
     from {
@@ -385,7 +385,7 @@ $easing: ease-in-out;
   height: 95%;
   width: 80%;
   top: 10%;
-  box-shadow: 0px 2px 7px -1px #000
+  box-shadow: 0px 2px 7px -1px #000;
 }
 
 .dog-body,
@@ -395,44 +395,51 @@ $easing: ease-in-out;
   width: 84%;
 }
 
-.back-stripe-1 {
+.stripes {
   position: absolute;
-  bottom: 69%;
-  right: 55%;
-  width: 14%;
-  height: 18%;
   background: $color-dog-accent;
-  box-shadow: inset 0 0 4px 4px $color-dog-main;
-  transform: rotate(155deg);
-}
 
+  &::before {
+    content: "";
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    box-shadow: inset 0 0 4px 5px $color-dog-main;
+    position: absolute;
+  }
 
-.back-stripe-2 {
-  position: absolute;
-  bottom: 69%;
-  right: 29%;
-  width: 14%;
-  height: 15%;
-  background: $color-dog-accent;
-  box-shadow: inset 0 0 3px 4px $color-dog-main;  
-}
-
-.face-stripe-1 {
-  position: absolute;
-  bottom: 27%;
-  right: 45%;
-  width: 14%;
-  height: 15%;
-  background: $color-dog-accent;
-  box-shadow: inset 0 0 3px 4px $color-dog-main;  
-}
-
-.face-stripe-2 {
-  position: absolute;
-  bottom: 81%;
-  right: 70%;
-  width: 24%;
-  height: 24%;
-  background: #7c462c;
-  box-shadow: inset 0 0 5px 3px #ffffff;
+  &.back-1 {
+    bottom: 69%;
+    right: 55%;
+    width: 14%;
+    height: 18%;
+    transform: rotate(155deg);
+  }
+  &.back-2 {
+    bottom: 69%;
+    right: 29%;
+    width: 14%;
+    height: 15%;
+  }
+  &.face-1 {
+    bottom: 27%;
+    right: 45%;
+    width: 14%;
+    height: 15%;
+    transform: rotate(18deg);
+  }
+  &.face-2 {
+    bottom: 60%;
+    right: 25%;
+    width: 15%;
+    height: 17%;
+    transform: rotate(167deg);
+  }
+  &.face-3 {
+    bottom: 81%;
+    right: 70%;
+    width: 24%;
+    height: 24%;
+  }
 }
