@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "gatsby": "^5.8.0",
+    "gatsby-plugin-gatsby-cloud": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",
     "gatsby-plugin-manifest": "^5.8.0",
     "gatsby-plugin-sass": "^6.8.0",

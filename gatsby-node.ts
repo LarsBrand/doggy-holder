@@ -7,7 +7,6 @@ const config: GatsbyConfig = {
   },
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
