@@ -31,6 +31,6 @@ export const useRandomBackgroundColor = () => {
         const hsl = { h: (Math.random()), s: 0.7, l: 0.41 };
         const rgb = hslToRgb(hsl.h, hsl.s, hsl.l)
         const freshColor = '#' + rgb.r.toString(16) + rgb.g.toString(16) + rgb.b.toString(16);
-        document.documentElement.style.setProperty('--primary-color', freshColor)
+        document?.documentElement.style.setProperty('--primary-color', freshColor)
     }, [])
 }

@@ -1,27 +1,13 @@
-import type { GatsbyConfig } from "gatsby";
 
-const config: GatsbyConfig = {
-  siteMetadata: {
-    title: `doggy-holder`,
-    siteUrl: `https://www.yourdomain.tld`
-  },
-  graphqlTypegen: true,
-  plugins: [
-    "gatsby-plugin-sass",
-    "gatsby-plugin-image",
-    "gatsby-plugin-sitemap",
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: { "icon": "src/images/icon.png" }
-    },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: { "name": "images", "path": "./src/images/" },
-      __key: "images"
-    }
-  ]
-};
+import type { GatsbyNode } from "gatsby"
 
-export default config;
+export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
+  const { createRedirect } = actions
+
+  // add redirect from friendly urls to cloud images
+  createRedirect({
+    fromPath: "/:width/:height",
+    toPath: "https://placekitten.com/:width/:height",
+    statusCode: 200, // '200' will hide that this is a redirect 
+  }) 
+}
