@@ -1,6 +1,7 @@
-// main
-$color-primary: #747474; // this is overwritten in the app
-$color-secondary: rgb(57, 119, 255);
+:root {
+    --primary-color: #c2c2c2;
+    --primary-color-light: #dfdfdf;
+}
 
 // Dog variables
 $color-dog-accent: #7c462c;
@@ -9,4 +10,4 @@ $dog-animation-speed: 300ms;
 
 // text
 $text-color-primary: #212529;
-$text-color-secondary: #FFF;
+$text-color-secondary: #fff;

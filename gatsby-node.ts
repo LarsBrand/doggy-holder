@@ -1,20 +1,17 @@
-
 import type { GatsbyNode } from "gatsby"
-import { forwardRef } from "react"
 
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createRedirect } = actions
 
   // Load all images
-  const result = await graphql<any>(`
-      {
+  const result = await graphql<Queries.Query>(`
+      query allContent{
         allContentfulPlaceholderImage {
           nodes {
             id
             title
             tagline
-            subject 
-            
+            subject             
             image {
               id              
               filename
@@ -40,18 +37,18 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
 
   // max size is 400x400
   const maxSize = 4000
-  const imageCount = result.data.allContentfulPlaceholderImage.nodes.length
-    for (let h = 0; h < maxSize; h++) {
-      // pick a pseudo random image. 
-      //height divided by total images, the reminder is used a array index
-      const imageIndex =  h % imageCount
-      const baseImageURL = result.data.allContentfulPlaceholderImage.nodes[imageIndex].image.url
+  const imageCount = result.data?.allContentfulPlaceholderImage.nodes.length || 0
+  for (let h = 0; h < maxSize; h++) {
+    // pick a pseudo random image. 
+    //height divided by total images, the reminder is used a array index
+    const imageIndex = h % imageCount
+    const baseImageURL = result.data?.allContentfulPlaceholderImage.nodes?.[imageIndex].image?.url || ''
 
-      createRedirect({
-        fromPath: `/:width/${h}`,
-        toPath: `${baseImageURL}?w=:width&h=${h}`,
-        statusCode: 200, // '200' will hide that this is a redirect 
-      })
+    createRedirect({
+      fromPath: `/:width/${h}`,
+      toPath: `${baseImageURL}?f=face&fit=fill&w=:width&h=${h}`,
+      statusCode: 200, // '200' will hide that this is a redirect 
+    })
 
   }
 }

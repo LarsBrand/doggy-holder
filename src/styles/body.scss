@@ -12,20 +12,24 @@ body {
   box-sizing: border-box;
 }
 
-html{
+html {
   background-color: #444;
 }
-body {  
-  background: var(--primary-color);
+
+.body { // this is actually a div in the root layout
+  min-width: 100%;
   min-height: 100vh;
-}
-
-.jumbotron {
+  background: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color-light), var(--primary-color));
   color: $text-color-secondary;
-  margin-left: 200px;
-  padding: 80px 40px;  
 }
 
-hr {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+.container{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.content{
+  flex: 1 1 auto
 }

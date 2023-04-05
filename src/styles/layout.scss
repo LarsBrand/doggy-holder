@@ -1,0 +1,30 @@
+.jumbotron {
+    color: $text-color-secondary;
+    margin-left: 2rem;
+    padding: 2rem 1rem;
+}
+
+hr {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.menu-container {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 12rem;
+}
+
+.menu {
+    color: $text-color-secondary;
+    flex-direction: column;
+    display: flex;
+    font-size: 2rem;
+    padding: 1rem;
+    margin-left: 2rem;
+    margin-top: 225px;
+    & > a {
+        color: $text-color-secondary;   
+        padding: .5rem;
+        margin-bottom: 1rem;
+    }
+}

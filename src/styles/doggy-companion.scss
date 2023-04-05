@@ -6,15 +6,15 @@ $dog-happy-speed: 1;
 $easing: ease-in-out;
 
 .dog-container {
-  position: fixed;
+  position: fixed; 
   left: $dog-width * 0.8;
   top: $dog-width;
-  transform: rotate(-30deg);
   width: $dog-width;
   height: $dog-width;
 }
 
 .dog {
+  transform: rotate(-30deg);
   width: 100%;
   height: 100%;
   z-index: 1;
