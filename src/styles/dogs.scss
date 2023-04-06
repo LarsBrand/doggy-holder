@@ -1,0 +1,25 @@
+$maxHeigt: calc(100vh - 250px);
+$maxWidth: 80vw;
+
+.dog-details-wrapper {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #eee;
+  padding: 6px;  
+  display: inline-block;
+  max-width: $maxWidth;
+}
+
+.dog-details {
+  width: auto;
+  max-height: $maxHeigt;
+  display: inline-block;
+
+  & img {
+    border-radius: 5px;
+    width: auto;
+    max-height: $maxHeigt;
+    display: inline-block;
+    margin: auto;
+  }
+}

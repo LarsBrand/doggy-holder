@@ -1,13 +1,24 @@
 import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { WelcomeHeader } from "../components/WelcomeHeader";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const data = graphql`
       query fourImages{
         allContentfulPlaceholderImage {
           nodes {
             id            
-            image {                            
+            image {                     
+              gatsbyImageData(
+                width: 300,
+                height: 300,
+                placeholder: DOMINANT_COLOR, 
+                cropFocus: FACE,
+                resizingBehavior: FILL,  
+                layout: FIXED,              
+                quality: 100, 
+                formats: [AUTO, WEBP, AVIF]
+              )                
               url
             }
           }
@@ -17,7 +28,7 @@ export const data = graphql`
 
 export const Head: HeadFC = () => {
   return <>
-    <title>Doggy-Holder 🐶</title>    
+    <title>Doggy-Holder 🐶</title>
   </>
 }
 
@@ -33,7 +44,7 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
         {randomImages.map(i =>
           <div key={i.value.id} style={{ padding: '12px', background: '#EEE', borderRadius: '6px', margin: '6px' }}>
             <Link to={`/dogs/${i.value.id}`}>
-              {i.value.image?.url && <img src={i.value.image?.url} width={300} height={300} style={{ objectFit: 'contain' }} />}
+              {i.value.image?.gatsbyImageData && <GatsbyImage image={i.value.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}
             </Link>
           </div>
         )}

@@ -1,16 +1,24 @@
 import React from 'react';
 import '../../styles/main.scss'
+import '../../styles/dogs.scss'
 import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export const data = graphql`
   query pageQuery($id: String) {
-    contentfulPlaceholderImage(id: { eq: $id }) {
+    contentfulPlaceholderImage(id: { eq: $id }) {    
       title
       tagline
       subject      
-      image {
-        id
-        url
+      image {                
+        gatsbyImageData(                          
+          resizingBehavior: PAD,
+          placeholder: DOMINANT_COLOR,                     
+          layout: CONSTRAINED,              
+          quality: 100, 
+          formats: [AUTO, WEBP, AVIF],                    
+        )                    
+        id        
       }
     }
   }
@@ -20,17 +28,26 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
   return (
     <main>
       <div>
-        dog page:
-        <h1>{contentfulPlaceholderImage?.title}</h1>
-        <code>{contentfulPlaceholderImage?.tagline}</code>
-        {contentfulPlaceholderImage?.image?.url && (
-          <img
-            style={{ maxWidth: '90vw', maxHeight: '90vh' }}
-            src={contentfulPlaceholderImage?.image.url}
-          />
-        )}
+        <div className="jumbotron">
+          <h1>{contentfulPlaceholderImage?.title}</h1>
+          <p className="lead">This is {contentfulPlaceholderImage?.subject}.</p>
+          <hr />
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          {contentfulPlaceholderImage?.image?.gatsbyImageData && (
+            <div className='dog-details-wrapper'>
+              <GatsbyImage
+                image={contentfulPlaceholderImage.image.gatsbyImageData}
+                alt={"some dog"}
+                objectFit='contain'
+                className='dog-details'
+                title={contentfulPlaceholderImage?.tagline || undefined}
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </main>
+    </main >
   );
 };
 
