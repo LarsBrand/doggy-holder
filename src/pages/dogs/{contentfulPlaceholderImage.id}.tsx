@@ -1,12 +1,14 @@
 import React from 'react';
 import '../../styles/main.scss'
 import '../../styles/dogs.scss'
-import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
+import { graphql, HeadFC, HeadProps, Link, PageProps } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { motion } from 'framer-motion';
 
 export const data = graphql`
   query pageQuery($id: String) {
-    contentfulPlaceholderImage(id: { eq: $id }) {    
+    contentfulPlaceholderImage(id: { eq: $id }) {   
+      id 
       title
       tagline
       subject      
@@ -27,10 +29,19 @@ export const data = graphql`
 const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>) => {
   return (
     <main>
-      <div>      
+      <div style={{ marginTop: '60px', overflow: 'hidden' }}>
         <div style={{ textAlign: 'center' }}>
           {contentfulPlaceholderImage?.image?.gatsbyImageData && (
-            <div className='dog-details-wrapper'>
+            <motion.div
+              layout
+              layoutId={contentfulPlaceholderImage.id}
+              key={contentfulPlaceholderImage.id}
+              className='dog-details-wrapper'
+              style={{ position: 'relative' }}
+            >
+              <Link to="/dogs" className="close-btn" title="close">
+                ✘
+              </Link>
               <GatsbyImage
                 image={contentfulPlaceholderImage.image.gatsbyImageData}
                 alt={"some dog"}
@@ -38,11 +49,11 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
                 className='dog-details'
                 title={contentfulPlaceholderImage?.tagline || undefined}
               />
-               <h1>{contentfulPlaceholderImage?.title}</h1>
-               <p className="lead">This is {contentfulPlaceholderImage?.subject}.</p>
-            </div>
+              <h2 style={{ textAlign: 'left' }}>{contentfulPlaceholderImage?.title}</h2>
+              <p style={{ textAlign: 'left', fontSize: '.8rem' }} ><span style={{ opacity: .8 }}>This is </span><span style={{ fontWeight: 800 }}>{contentfulPlaceholderImage?.subject}.</span></p>
+            </motion.div>
           )}
-         
+
         </div>
       </div>
     </main >

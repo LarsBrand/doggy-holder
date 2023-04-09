@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "framer-motion": "^10.11.2",
     "gatsby": "^5.8.0",
     "gatsby-plugin-gatsby-cloud": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",

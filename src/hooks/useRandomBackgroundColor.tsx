@@ -6,14 +6,14 @@ type RGB = {
     b: number
 }
 
-type HSL ={
+type HSL = {
     h: number
     s: number
-    l:number
+    l: number
 }
 
 const hslToRgb = (input: HSL): RGB => {
-    const {h,  s, l} = input
+    const { h, s, l } = input
     let r, g, b;
     function hue2rgb(p: number, q: number, t: number) {
         if (t < 0) t += 1;
@@ -40,13 +40,13 @@ const toCssColor = ({ r, g, b }: RGB) => `#${hexa(r)}${hexa(g)}${hexa(b)}`
 
 export const useRandomBackgroundColor = () => {
     React.useEffect(() => {
-        const hue = Math.random()   
+        const hue = Math.random()
         const hue2 = hue > .5 ? hue - .2 : hue + .2
         const hslPrimary = { h: hue2, s: .8, l: 0.2 }
         const hslPrimaryLight = { h: hue, s: 1, l: 0.37 }
-        const hslPrimaryBackgroundLight = { h: hue, s: .5, l: 0.8 }
+        const hslPrimaryBackgroundBorder = { h: hue, s: .3, l: 0.2 }
         document?.documentElement.style.setProperty('--primary-color', toCssColor(hslToRgb(hslPrimary)))
         document?.documentElement.style.setProperty('--primary-color-light', toCssColor(hslToRgb(hslPrimaryLight)))
-        document?.documentElement.style.setProperty('--primary-color-background-light', toCssColor(hslToRgb(hslPrimaryBackgroundLight)))
+        document?.documentElement.style.setProperty('--primary-color-background-border', toCssColor(hslToRgb(hslPrimaryBackgroundBorder)) + 'AA')
     }, [])
 }

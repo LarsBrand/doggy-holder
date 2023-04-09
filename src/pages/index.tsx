@@ -2,6 +2,7 @@ import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { WelcomeHeader } from "../components/WelcomeHeader";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { motion } from "framer-motion";
 
 export const data = graphql`
       query fourImages{
@@ -40,15 +41,31 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
   return (
     <main >
       <WelcomeHeader />
-      <div style={{ display: "flex", flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '0 1rem 2rem 200px' }}>
+        <div style={{ backgroundColor: 'var(--primary-color-background-border)', padding: '2rem', borderRadius: '6px', fontWeight: 200 }} >
+          provide the image width & height in the url
+          <br />
+          <div style={{ display: 'flex', alignItems: 'baseline' }}>
+            <div style={{ display: 'inline-block' }}>Like:</div>
+            <div style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}><code>{document?.location.protocol}//{document?.location.host}/300/400</code></div>
+          </div>
+        </div>
+      </div>
+      <motion.div layout style={{ display: "flex", flexWrap: 'wrap', justifyContent: 'flex-end' }}>
         {randomImages.map(i =>
-          <div key={i.value.id} style={{ padding: '12px', background: 'var(--primary-color-background-light)', borderRadius: '6px', margin: '6px' }}>
+          <motion.div
+            layout
+            layoutId={i.value.id}
+            key={`index_${i.value.id}`}
+            style={{ margin: '1px' }}
+            className="dog-details-wrapper"
+          >
             <Link to={`/dogs/${i.value.id}`}>
               {i.value.image?.gatsbyImageData && <GatsbyImage image={i.value.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}
             </Link>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
     </main>
   )
 }

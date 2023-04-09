@@ -4,6 +4,7 @@ import { DoggyCompanion } from "./DoggyCompanion"
 import { useInitializeAnimation } from "../hooks/useInitializeAnimation"
 import { useRandomBackgroundColor } from "../hooks/useRandomBackgroundColor"
 import { Link } from "gatsby"
+import { motion } from "framer-motion"
 
 export const Layout: React.FC<{ children: any }> = ({ children }) => {
     useRandomBackgroundColor()
@@ -11,17 +12,17 @@ export const Layout: React.FC<{ children: any }> = ({ children }) => {
 
     return (
         <div className="body  before-animate">
-            <div className="container">
+            <motion.div className="container" layout layoutRoot>
                 <div className="menu-container">
                     <DoggyCompanion />
                     <header className="menu">
-                        <Link to="/" activeClassName="active">Home</Link>
-                        <Link to="/dogs"  activeClassName="active" partiallyActive>Dogs</Link>
-                        <Link to="/about"  activeClassName="active" partiallyActive>About</Link>                        
-                    </header>                    
-                </div> 
+                        <Link to="/" activeClassName="active" style={{ paddingLeft: '200px' }}>Home</Link>
+                        <Link to="/dogs" activeClassName="active" partiallyActive>Dogs</Link>
+                        <Link to="/about" activeClassName="active" partiallyActive>About</Link>
+                    </header>
+                </div>
                 <div className="content">{children}</div>
-            </div>
+            </motion.div>
         </div>
     )
 } 
