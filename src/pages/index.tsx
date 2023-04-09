@@ -33,7 +33,7 @@ export const Head: HeadFC = () => {
   </>
 }
 
-const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
+const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data, location }) => {
   const randomImages = data.allContentfulPlaceholderImage.nodes.map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .slice(0, 4)
@@ -47,7 +47,7 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
           <br />
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
             <div style={{ display: 'inline-block' }}>Like:</div>
-            <div style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}><code>{document?.location.protocol}//{document?.location.host}/300/400</code></div>
+            <div style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}><code>{location?.href}/300/400</code></div>
           </div>
         </div>
       </div>
