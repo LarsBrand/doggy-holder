@@ -1,6 +1,7 @@
 :root {
     --primary-color: #c2c2c2;
     --primary-color-light: #dfdfdf;
+    --primary-color-background-light: #dfdfdf;;
 }
 
 // Dog variables
@@ -11,3 +12,6 @@ $dog-animation-speed: 300ms;
 // text
 $text-color-primary: #212529;
 $text-color-secondary: #fff;
+
+// breakpoint
+$break-max-width: 690px

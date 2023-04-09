@@ -5,12 +5,20 @@ $dog-head-speed: 60;
 $dog-happy-speed: 1;
 $easing: ease-in-out;
 
+
+
 .dog-container {
-  position: fixed; 
+  position: fixed;
   left: $dog-width * 0.8;
   top: $dog-width;
   width: $dog-width;
   height: $dog-width;
+}
+
+@media (max-width: $break-max-width) {
+  .dog-container {
+    position: absolute;
+  }
 }
 
 .dog {

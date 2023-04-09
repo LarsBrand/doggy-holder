@@ -14,11 +14,11 @@ export const Layout: React.FC<{ children: any }> = ({ children }) => {
             <div className="container">
                 <div className="menu-container">
                     <DoggyCompanion />
-                    <aside className="menu">
-                        <Link to="/">Home</Link>
-                        <Link to="/dogs">Dogs</Link>
-                        <Link to="/about">About</Link>
-                    </aside>
+                    <header className="menu">
+                        <Link to="/" activeClassName="active">Home</Link>
+                        <Link to="/dogs"  activeClassName="active" partiallyActive>Dogs</Link>
+                        <Link to="/about"  activeClassName="active" partiallyActive>About</Link>                        
+                    </header>                    
                 </div> 
                 <div className="content">{children}</div>
             </div>

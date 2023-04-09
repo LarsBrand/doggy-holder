@@ -6,7 +6,14 @@ type RGB = {
     b: number
 }
 
-const hslToRgb = (h: number, s: number, l: number): RGB => {
+type HSL ={
+    h: number
+    s: number
+    l:number
+}
+
+const hslToRgb = (input: HSL): RGB => {
+    const {h,  s, l} = input
     let r, g, b;
     function hue2rgb(p: number, q: number, t: number) {
         if (t < 0) t += 1;
@@ -37,7 +44,9 @@ export const useRandomBackgroundColor = () => {
         const hue2 = hue > .5 ? hue - .2 : hue + .2
         const hslPrimary = { h: hue2, s: .8, l: 0.2 }
         const hslPrimaryLight = { h: hue, s: 1, l: 0.37 }
-        document?.documentElement.style.setProperty('--primary-color', toCssColor(hslToRgb(hslPrimary.h, hslPrimary.s, hslPrimary.l)))
-        document?.documentElement.style.setProperty('--primary-color-light', toCssColor(hslToRgb(hslPrimaryLight.h, hslPrimaryLight.s, hslPrimaryLight.l)))
+        const hslPrimaryBackgroundLight = { h: hue, s: .5, l: 0.8 }
+        document?.documentElement.style.setProperty('--primary-color', toCssColor(hslToRgb(hslPrimary)))
+        document?.documentElement.style.setProperty('--primary-color-light', toCssColor(hslToRgb(hslPrimaryLight)))
+        document?.documentElement.style.setProperty('--primary-color-background-light', toCssColor(hslToRgb(hslPrimaryBackgroundLight)))
     }, [])
 }

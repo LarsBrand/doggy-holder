@@ -27,12 +27,7 @@ export const data = graphql`
 const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>) => {
   return (
     <main>
-      <div>
-        <div className="jumbotron">
-          <h1>{contentfulPlaceholderImage?.title}</h1>
-          <p className="lead">This is {contentfulPlaceholderImage?.subject}.</p>
-          <hr />
-        </div>
+      <div>      
         <div style={{ textAlign: 'center' }}>
           {contentfulPlaceholderImage?.image?.gatsbyImageData && (
             <div className='dog-details-wrapper'>
@@ -43,8 +38,11 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
                 className='dog-details'
                 title={contentfulPlaceholderImage?.tagline || undefined}
               />
+               <h1>{contentfulPlaceholderImage?.title}</h1>
+               <p className="lead">This is {contentfulPlaceholderImage?.subject}.</p>
             </div>
           )}
+         
         </div>
       </div>
     </main >
