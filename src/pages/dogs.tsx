@@ -57,8 +57,9 @@ const DogListItem: React.FC<{ i: Queries.ContentfulPlaceholderImage, index: numb
       layout
       layoutId={i.id}
       key={`dogs_${i.id}`}
-      className="dog-details-wrapper list"            
-      style={{ zIndex: isLayoutAnimationRunning ? '200' : '100' }}      
+      className="dog-details-wrapper list"
+      style={{ zIndex: isLayoutAnimationRunning ? '200' : '100' }}
+      transition={{ duration: .7, delay: .4}}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 1.05 }}
       onLayoutAnimationStart={() => setIslayoutAnimationRunning(true)}
