@@ -47,7 +47,9 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data, location }) => {
           <br />
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
             <div style={{ display: 'inline-block' }}>Like:</div>
-            <div style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}><code>{location?.href}/300/400</code></div>
+            <div style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem', fontWeight: 'bold', color:'#888'}}>
+              <code>{location?.href}<span style={{color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}>300</span>/<span style={{color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}>400</span></code>
+              </div>
           </div>
         </div>
       </div>
