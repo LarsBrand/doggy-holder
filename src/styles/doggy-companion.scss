@@ -431,12 +431,12 @@ $easing: ease-in-out;
     height: 15%;
   }
   &.face-1 {
-    bottom: 27%;
-    right: 45%;
+    bottom: 28%;
+    right: 31%;
     width: 14%;
     height: 15%;
     transform: rotate(18deg);
-  }
+  }  
   &.face-2 {
     bottom: 60%;
     right: 25%;
@@ -445,9 +445,24 @@ $easing: ease-in-out;
     transform: rotate(167deg);
   }
   &.face-3 {
-    bottom: 81%;
-    right: 70%;
-    width: 24%;
-    height: 24%;
+    bottom: 40%;
+    right: 46%;
+    width: 14%;
+    height: 15%;
+    transform: rotate(18deg);
   }
+  &.face-4 {
+    bottom: 23%;
+    left: 20%;
+    width: 12%;
+    height: 15%;
+    transform: rotate(34deg);
+  }
+  &.face-5 {
+    bottom: 71%;
+    right: 59%;
+    width: 26%;
+    height: 28%;
+    transform: rotate(145deg);
+  }  
 }
