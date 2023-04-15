@@ -1,7 +1,7 @@
 import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { AnimatePresence, motion, useIsPresent, usePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 export const data = graphql`
       query allDogImages{
@@ -50,13 +50,19 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
 
 
 const DogListItem: React.FC<{ i: Queries.ContentfulPlaceholderImage, index: number }> = ({ i, index }) => {
+  const [isLayoutAnimationRunning, setIslayoutAnimationRunning] = React.useState(false)
+
   return (
     <motion.div
       layout
       layoutId={i.id}
       key={`dogs_${i.id}`}
-      className="dog-details-wrapper"
-      style={{ margin: '1px' }}
+      className="dog-details-wrapper list"            
+      style={{ zIndex: isLayoutAnimationRunning ? '200' : '100' }}      
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 1.05 }}
+      onLayoutAnimationStart={() => setIslayoutAnimationRunning(true)}
+      onLayoutAnimationComplete={() => setIslayoutAnimationRunning(false)}
     >
       <Link to={`/dogs/${i.id}`}>
         {i.image?.gatsbyImageData && <GatsbyImage image={i.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}

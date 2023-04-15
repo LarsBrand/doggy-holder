@@ -20,7 +20,8 @@ export const data = graphql`
           quality: 100, 
           formats: [AUTO, WEBP, AVIF],                    
         )                    
-        id        
+        id    
+        publicUrl    
       }
     }
   }
@@ -32,26 +33,32 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
       <div style={{ marginTop: '60px', overflow: 'hidden' }}>
         <div style={{ textAlign: 'center' }}>
           {contentfulPlaceholderImage?.image?.gatsbyImageData && (
+
             <motion.div
               layout
               layoutId={contentfulPlaceholderImage.id}
               key={contentfulPlaceholderImage.id}
               className='dog-details-wrapper'
-              style={{ position: 'relative' }}
+              style={{ position: 'relative', maxHeight:'calc(100vh - 10px)'}}              
             >
               <Link to="/dogs" className="close-btn" title="close">
                 ✘
               </Link>
-              <GatsbyImage
-                image={contentfulPlaceholderImage.image.gatsbyImageData}
-                alt={"some dog"}
-                objectFit='contain'
-                className='dog-details'
-                title={contentfulPlaceholderImage?.tagline || undefined}
-              />
+              <motion.div className='dog-details'>
+                <GatsbyImage
+                  loading='eager'
+                  image={contentfulPlaceholderImage.image.gatsbyImageData}
+                  alt={"some dog"}
+                  objectFit='contain'
+                  title={contentfulPlaceholderImage?.tagline || undefined}
+                /> 
+                {/* <img  style={{maxWidth:'400px', maxHeight:'400px'}}  src={contentfulPlaceholderImage.image.publicUrl}></img> */}
+              </motion.div>
               <h2 style={{ textAlign: 'left' }}>{contentfulPlaceholderImage?.title}</h2>
               <p style={{ textAlign: 'left', fontSize: '.8rem' }} ><span style={{ opacity: .8 }}>This is </span><span style={{ fontWeight: 800 }}>{contentfulPlaceholderImage?.subject}.</span></p>
+
             </motion.div>
+
           )}
 
         </div>

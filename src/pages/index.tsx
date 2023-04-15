@@ -47,25 +47,27 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data, location }) => {
           <br />
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
             <div style={{ display: 'inline-block' }}>Like:</div>
-            <div style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem', fontWeight: 'bold', color:'#888'}}>
-              <code>{location?.href}<span style={{color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}>300</span>/<span style={{color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}>400</span></code>
-              </div>
+            <div style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem', fontWeight: 'bold', color: '#888' }}>
+              <code>{location?.href}<span style={{ color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}>300</span>/<span style={{ color: 'var(--primary-color-light)', textShadow: '0px 0px 2px #000000' }}>400</span></code>
+            </div>
           </div>
         </div>
       </div>
       <motion.div layout style={{ display: "flex", flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-        {randomImages.map(i =>
+        {randomImages.map(i => (
           <motion.div
             layout
             layoutId={i.value.id}
             key={`index_${i.value.id}`}
-            style={{ margin: '1px' }}
-            className="dog-details-wrapper"
+            className="dog-details-wrapper home"            
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 1.05 }}
           >
             <Link to={`/dogs/${i.value.id}`}>
               {i.value.image?.gatsbyImageData && <GatsbyImage image={i.value.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}
             </Link>
           </motion.div>
+        )
         )}
       </motion.div>
     </main>

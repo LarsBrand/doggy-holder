@@ -8,6 +8,23 @@ $maxWidth: 80vw;
   padding: 6px;
   display: inline-block;
   max-width: $maxWidth;
+  z-index: 100;
+  position: relative;
+
+  &.home {
+    margin: 4px;
+    z-index: 200;
+  }
+
+  &.list {
+    margin: 4px;
+    z-index: 100;
+     
+    & *{
+      max-width: 250px;
+      max-height: 250px;
+    }
+  }
 }
 
 .dog-details {
@@ -36,8 +53,8 @@ $maxWidth: 80vw;
   border-radius: 2rem;
   text-decoration: none;
   box-shadow: inset 0 0 6px 1px #000000aa;
-  transition: background-color .3s, box-shadow .3s, font-weight .1s;
-  &:hover{
+  transition: background-color 0.3s, box-shadow 0.3s, font-weight 0.1s;
+  &:hover {
     background: #ffffffee;
     font-weight: bold;
     box-shadow: inset 0 0 2px 1px #000000aa;
