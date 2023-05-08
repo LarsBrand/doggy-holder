@@ -1,5 +1,5 @@
 import React from "react"
-import { motion } from "framer-motion"
+import {  motion } from '../motion/packages/framer-motion/src'
 
 
 const baseMotion = (duration: number) => (count: number) => ({

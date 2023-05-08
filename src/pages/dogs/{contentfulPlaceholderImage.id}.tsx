@@ -3,7 +3,8 @@ import '../../styles/main.scss'
 import '../../styles/dogs.scss'
 import { graphql, HeadFC, HeadProps, Link, PageProps } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { motion } from 'framer-motion';
+import { motion } from '../../motion/packages/framer-motion/src'
+
 
 export const data = graphql`
   query pageQuery($id: String) {
@@ -27,6 +28,13 @@ export const data = graphql`
   }
 `;
 
+const spring = {
+  type: "spring",
+  stiffness: 700,
+  damping: 30
+};
+
+
 const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>) => {
   return (
     <main>
@@ -37,12 +45,13 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
             <motion.div
               layout
               layoutId={contentfulPlaceholderImage.id}
+              transition={spring}
               key={contentfulPlaceholderImage.id}
               className='dog-details-wrapper'
               style={{ position: 'relative', maxHeight:'calc(100vh - 10px)'}}              
             >
               <Link to="/dogs" className="close-btn" title="close">
-                ✘
+              ✖
               </Link>
               <motion.div className='dog-details'>
                 <GatsbyImage
@@ -52,15 +61,11 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
                   objectFit='contain'
                   title={contentfulPlaceholderImage?.tagline || undefined}
                 /> 
-                {/* <img  style={{maxWidth:'400px', maxHeight:'400px'}}  src={contentfulPlaceholderImage.image.publicUrl}></img> */}
               </motion.div>
               <h2 style={{ textAlign: 'left' }}>{contentfulPlaceholderImage?.title}</h2>
               <p style={{ textAlign: 'left', fontSize: '.8rem' }} ><span style={{ opacity: .8 }}>This is </span><span style={{ fontWeight: 800 }}>{contentfulPlaceholderImage?.subject}.</span></p>
-
             </motion.div>
-
           )}
-
         </div>
       </div>
     </main >

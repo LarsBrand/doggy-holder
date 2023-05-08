@@ -4,7 +4,7 @@ import { DoggyCompanion } from "./DoggyCompanion"
 import { useInitializeAnimation } from "../hooks/useInitializeAnimation"
 import { useRandomBackgroundColor } from "../hooks/useRandomBackgroundColor"
 import { Link } from "gatsby"
-import { motion } from "framer-motion"
+import {  motion } from '../motion/packages/framer-motion/src'
 
 export const Layout: React.FC<{ children: any }> = ({ children }) => {
     useRandomBackgroundColor()
