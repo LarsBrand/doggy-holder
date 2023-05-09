@@ -44,9 +44,9 @@ export const useRandomBackgroundColor = () => {
         const hue2 = hue > .5 ? hue - .2 : hue + .2
         const hslPrimary = { h: hue2, s: .8, l: 0.2 }
         const hslPrimaryLight = { h: hue, s: 1, l: 0.37 }
-        const hslPrimaryBackgroundBorder = { h: hue, s: .3, l: 0.2 }
+        const hslPrimaryBackgroundBorder = { h: hue, s: .3, l: 0.25 }
         document?.documentElement.style.setProperty('--primary-color', toCssColor(hslToRgb(hslPrimary)))
         document?.documentElement.style.setProperty('--primary-color-light', toCssColor(hslToRgb(hslPrimaryLight)))
-        document?.documentElement.style.setProperty('--primary-color-background-border', toCssColor(hslToRgb(hslPrimaryBackgroundBorder)) + 'AA')
+        document?.documentElement.style.setProperty('--primary-color-background-border', toCssColor(hslToRgb(hslPrimaryBackgroundBorder)) + '44')
     }, [])
 }

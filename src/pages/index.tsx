@@ -55,7 +55,11 @@ const HomeDoggyImage: React.FC<{
   transition={spring}   
 >
   <Link to={`/dogs/${i.value.id}`}>
-    {i.value.image?.gatsbyImageData && <GatsbyImage image={i.value.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}
+    {i.value.image?.gatsbyImageData && <>
+        <GatsbyImage image={i.value.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />
+        <link rel="preload" as="image" href={i.value.image?.publicUrl} />
+      </>
+    }
   </Link>
 </motion.div>
 }
@@ -69,7 +73,7 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data, location }) => {
     <main >
       <WelcomeHeader />
       <div style={{ display: 'flex', justifyContent: 'center', padding: '0 1rem 2rem 200px' }}>
-        <div style={{ backgroundColor: 'var(--primary-color-background-border)', padding: '2rem', borderRadius: '6px', fontWeight: 200 }} >
+        <div style={{ backgroundColor: 'var(--primary-color-background-border)', padding: '2rem', borderRadius: '6px', fontWeight: 200, backdropFilter:'blur(10px)' }} >
           provide the image width & height in the url
           <br />
           <div style={{ display: 'flex', alignItems: 'baseline' }}>

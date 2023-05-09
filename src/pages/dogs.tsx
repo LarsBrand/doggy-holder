@@ -20,10 +20,11 @@ export const data = graphql`
                 formats: [AUTO, WEBP, AVIF]
               )                
               url
+              publicUrl
             }
           }
         }
-      }
+      }     
     `
 
 export const Head: HeadFC = () => {
@@ -36,7 +37,7 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
   const allDogs = data.allContentfulPlaceholderImage.nodes
   return (
     <main >
-      <motion.div layout style={{ display: "inline-flex", flexWrap: 'wrap', marginTop: '52px', alignContent: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+      <motion.div layout style={{ display: "inline-flex", flexWrap: 'wrap', marginTop: '58px', alignContent: 'center', justifyContent: 'center', overflow: 'hidden' }}>
         <div style={{ display: 'inline-block', width: '200px', height: '245px' }}></div>
         <AnimatePresence>
           {allDogs.map((i, index) =>
@@ -73,6 +74,7 @@ const DogListItem: React.FC<{ i: Queries.ContentfulPlaceholderImage, index: numb
     >
       <Link to={`/dogs/${i.id}`}>
         {i.image?.gatsbyImageData && <GatsbyImage image={i.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}
+        <link rel="preload" as="image" href={i.image?.publicUrl} />
       </Link>
     </motion.div>
   )

@@ -41,7 +41,6 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
       <div style={{ marginTop: '60px', overflow: 'hidden' }}>
         <div style={{ textAlign: 'center' }}>
           {contentfulPlaceholderImage?.image?.gatsbyImageData && (
-
             <motion.div
               layout
               layoutId={contentfulPlaceholderImage.id}
@@ -54,13 +53,12 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
               ✖
               </Link>
               <motion.div className='dog-details'>
-                <GatsbyImage
-                  loading='eager'
-                  image={contentfulPlaceholderImage.image.gatsbyImageData}
-                  alt={"some dog"}
-                  objectFit='contain'
+                <img 
+                  src={contentfulPlaceholderImage.image.publicUrl}   
                   title={contentfulPlaceholderImage?.tagline || undefined}
-                /> 
+                  style={{objectFit:'contain' }}
+                  alt={"some dog"}
+                />      
               </motion.div>
               <h2 style={{ textAlign: 'left' }}>{contentfulPlaceholderImage?.title}</h2>
               <p style={{ textAlign: 'left', fontSize: '.8rem' }} ><span style={{ opacity: .8 }}>This is </span><span style={{ fontWeight: 800 }}>{contentfulPlaceholderImage?.subject}.</span></p>
