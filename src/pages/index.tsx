@@ -65,7 +65,7 @@ const HomeDoggyImage: React.FC<{
 </motion.div>
 }
 
-const PlaceholderUrlBox = ()=>{
+const PlaceholderUrlBox: React.FC<{href:string}> = ({href})=>{
   return <div className="cta-container">
     <div className='cta-box'>
       <div className="header">
@@ -74,14 +74,14 @@ const PlaceholderUrlBox = ()=>{
       <div className="action">       
           <div style={{ display: 'inline-block' }}>Like:</div>
           <div className="highlight">
-            <code>{location?.href}<span className="colored" >300</span>/<span className="colored">400</span></code>
+            <code>{href}<span className="colored" >300</span>/<span className="colored">400</span></code>
           </div>       
        </div>
     </div>
   </div>
 }
 
-const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
+const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data, location }) => {
   const randomImages = data.allContentfulPlaceholderImage.nodes.map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .slice(0, 4)
@@ -89,7 +89,7 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
   return (
     <main >
       <WelcomeHeader />      
-      <PlaceholderUrlBox />
+      <PlaceholderUrlBox href={location?.href} />
       <div style={{ display: "flex", flexWrap: 'wrap', justifyContent: 'space-evenly', overflowX:'hidden', overflowY:'visible', overflow:'visible'}}>
         {randomImages.map((i,index) => (
           <HomeDoggyImage key={i.value.id} i={i} index={index} />
