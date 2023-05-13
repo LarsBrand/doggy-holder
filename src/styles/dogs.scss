@@ -10,6 +10,24 @@ $maxWidth: 80vw;
   max-width: $maxWidth;
   z-index: 100;
   position: relative;
+  backdrop-filter:blur(5px);
+  
+  color: $text-color-secondary;
+  text-shadow: 1px 1px 1px #333;
+  font-size: $baseFontSize * $goldenRatio;
+  font-weight: 300;
+  text-align: center;
+  
+  & h2 {
+    margin:$baseFontSize;
+    margin-top: 0;
+  }
+
+  & p {
+    margin-top: 0;
+    margin:$baseFontSize;
+  }
+
 
   &.home {
     margin: 4px;
@@ -36,6 +54,7 @@ $maxWidth: 80vw;
     border-radius: 5px;
     width: auto;
     max-height: $maxHeigt;
+    max-width: 100%;
     display: inline-block;
     margin: auto;
   }
@@ -52,6 +71,7 @@ $maxWidth: 80vw;
   padding: 0.5rem 0.7rem;  
   text-decoration: none;
   box-shadow: inset 0 0 3px 1px #000000aa;
+  text-shadow: none;
   border-radius: 5px;  
   right: 9px;
   top: 9px;
@@ -65,4 +85,29 @@ $maxWidth: 80vw;
     color:#000000;
     transition: background-color 0.1s, box-shadow 0.1s, font-weight 0.1s;
   }
+}
+
+.dog-list-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: center; 
+  justify-content: center;
+  overflow: hidden;
+  padding-right: 2rem;
+}
+
+.dog-list-spacer{
+ display: inline-block;
+ width: 200px;
+ height: 245px ;
+}
+
+@media (max-width: $break-max-width) {
+  .dog-list-container {
+    padding: 0
+  }  
+  .dog-list-spacer{  
+    width: 100%;
+    height: $baseFontSize;
+  } 
 }

@@ -37,6 +37,7 @@ const hslToRgb = (input: HSL): RGB => {
 
 const hexa = (n: number): string => n.toString(16).padStart(2, '0')
 const toCssColor = ({ r, g, b }: RGB) => `#${hexa(r)}${hexa(g)}${hexa(b)}`
+const toContrastColor = ({ r, g, b }: RGB) => (r*0.199 + g*0.587 + b*0.114) < 70 ? '#ffffff':'#000000'
 
 export const useRandomBackgroundColor = () => {
     React.useEffect(() => {
@@ -48,5 +49,6 @@ export const useRandomBackgroundColor = () => {
         document?.documentElement.style.setProperty('--primary-color', toCssColor(hslToRgb(hslPrimary)))
         document?.documentElement.style.setProperty('--primary-color-light', toCssColor(hslToRgb(hslPrimaryLight)))
         document?.documentElement.style.setProperty('--primary-color-background-border', toCssColor(hslToRgb(hslPrimaryBackgroundBorder)) + '44')
+        document?.documentElement.style.setProperty('--primary-text-shadow-color', toContrastColor(hslToRgb(hslPrimaryLight)))
     }, [])
 }

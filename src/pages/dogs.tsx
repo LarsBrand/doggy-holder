@@ -37,14 +37,14 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
   const allDogs = data.allContentfulPlaceholderImage.nodes
   return (
     <main >
-      <motion.div layout style={{ display: "inline-flex", flexWrap: 'wrap', marginTop: '58px', alignContent: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        <div style={{ display: 'inline-block', width: '200px', height: '245px' }}></div>
+      <div className="dog-list-container" >
+        <div className="dog-list-spacer"></div>
         <AnimatePresence>
           {allDogs.map((i, index) =>
             <DogListItem i={i} index={index} key={i.id} />
           )}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </main>
   )
 }

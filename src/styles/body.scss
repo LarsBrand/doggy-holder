@@ -17,13 +17,17 @@ html {
   background-color: #444;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .body { // this is actually a div in the root layout
   min-width: 100%;
   min-height: 100vh;
   background: var(--primary-color);
   background: linear-gradient(135deg, var(--primary-color-light), var(--primary-color));
   color: $text-color-secondary;
-  display:inline-block;
+  display: inline-block;
 }
 
 .content{

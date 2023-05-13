@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../styles/main.scss'
-import '../../styles/dogs.scss'
 import { graphql, HeadFC, HeadProps, Link, PageProps } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import { motion } from '../../motion/packages/framer-motion/src'
 
 
@@ -38,7 +36,7 @@ const spring = {
 const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>) => {
   return (
     <main>
-      <div style={{ marginTop: '60px', overflow: 'hidden' }}>
+      <div style={{overflow: 'hidden' }}>
         <div style={{ textAlign: 'center' }}>
           {contentfulPlaceholderImage?.image?.gatsbyImageData && (
             <motion.div
@@ -60,8 +58,8 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
                   alt={"some dog"}
                 />      
               </motion.div>
-              <h2 style={{ textAlign: 'left' }}>{contentfulPlaceholderImage?.title}</h2>
-              <p style={{ textAlign: 'left', fontSize: '.8rem' }} ><span style={{ opacity: .8 }}>This is </span><span style={{ fontWeight: 800 }}>{contentfulPlaceholderImage?.subject}.</span></p>
+              <h2>{contentfulPlaceholderImage?.title}</h2>
+              <p><span style={{ opacity: .8 }}>This is </span><span style={{ fontWeight: 800 }}>{contentfulPlaceholderImage?.subject}.</span></p>
             </motion.div>
           )}
         </div>

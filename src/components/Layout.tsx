@@ -11,12 +11,12 @@ export const Layout: React.FC<{ children: any }> = ({ children }) => {
     useInitializeAnimation()
 
     return (
-        <div className="body  before-animate">
+        <div className="body before-animate">
             <motion.div className="container" layout layoutRoot>
                 <div className="menu-container">
                     <DoggyCompanion />
                     <header className="menu">
-                        <Link to="/" activeClassName="active" style={{ paddingLeft: '200px' }}>Home</Link>
+                        <Link to="/" activeClassName="active">Home</Link>
                         <Link to="/dogs" activeClassName="active" partiallyActive>Dogs</Link>
                         <Link to="/about" activeClassName="active" partiallyActive>About</Link>
                     </header>

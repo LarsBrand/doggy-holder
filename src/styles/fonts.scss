@@ -4,14 +4,28 @@ body {
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+$goldenRatio: 1.618;
+$baseFontSize: .75rem;
+
 h1 {
-  font-size: 3.5rem;
+  font-size: calc($baseFontSize * $goldenRatio * $goldenRatio * $goldenRatio *$goldenRatio);
+  font-weight: 300;
+  line-height: 1.2;
+  margin:0;
+}
+
+h2 {
+  font-size: calc($baseFontSize * $goldenRatio * $goldenRatio );
   font-weight: 300;
   line-height: 1.2;
   margin:0;
 }
 
 .lead {
-    font-size: 1.25rem;
+    font-size: calc($baseFontSize * $goldenRatio);
     font-weight: 300;
+}
+
+.closer { 
+  font-size: $baseFontSize;
 }

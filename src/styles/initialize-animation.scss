@@ -1,9 +1,10 @@
 .body {
   &.before-animate {
+    will-change: clip-path;
     clip-path: ellipse(290px 290px at 0% 0%);
     transition: clip-path .75s;
     &.on-animate {
-      clip-path: ellipse(max(150vw, 150vh) max(150vw, 150vh) at 0% 0%); // needs to overshoot the ellipse a bit
+      clip-path: ellipse(max(120vw, 120vh) max(120vw, 120vh) at 0% 0%); // needs to overshoot the ellipse a bit
     }
   }
 }
