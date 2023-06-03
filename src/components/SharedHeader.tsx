@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react"
-import {  motion } from '../motion/packages/framer-motion/src'
+import { motion } from '../motion/packages/framer-motion/src'
+import { useMotionProps } from "../hooks/useMotionProps"
 
 
 const baseMotion = (duration: number) => (count: number) => ({
@@ -9,29 +10,33 @@ const baseMotion = (duration: number) => (count: number) => ({
 })
 const motionProps = baseMotion(.2)
 
-interface HeaderProps{
+interface HeaderProps {
     title: ReactNode
     subTitle: ReactNode
     closer: ReactNode
 }
 
-export const SharedHeader: React.FC<HeaderProps> = ({title, subTitle, closer}) => {
+export const SharedHeader: React.FC<HeaderProps> = ({ title, subTitle, closer }) => {
+    const motions1 =useMotionProps(motionProps(1))
+    const motions2 =useMotionProps(motionProps(2))
+    const motions3 =useMotionProps(motionProps(3))
+    
     return <motion.div
         className="jumbotron-container"
         transition={{ duration: 0.5 }}
     >
         <div className="jumbotron">
-            <motion.h1 {...motionProps(1)}>
+            <motion.h1 {...motions1}>
                 {title}
             </motion.h1>
             <motion.p
-                {...motionProps(2)}
+                {...motions2}
                 className="lead">
                 {subTitle}
             </motion.p>
             <hr />
             <motion.p
-                {...motionProps(3)}
+                {...motions3}
                 className="closer"
             >
                 {closer}

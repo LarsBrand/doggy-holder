@@ -1,12 +1,13 @@
+import React from 'react'
 import { rootProjectionNode } from "./node/HTMLProjectionNode"
 import { IProjectionNode } from './node/types';
 
 
-function findByIDRecursive(node :IProjectionNode<unknown>, layoutId:string):boolean {    
-    if (node.options.layoutId == layoutId){
+function findByIDRecursive(node: IProjectionNode<unknown>, layoutId: string): boolean {
+    if (node.options.layoutId == layoutId) {
         return true
     }
-    if (!!node.children){
+    if (!!node.children) {
         return !!Array.from(node.children).find(f => findByIDRecursive(f, layoutId))
     }
     return false
@@ -17,11 +18,16 @@ function findByIDRecursive(node :IProjectionNode<unknown>, layoutId:string):bool
  * @param layoutId ID used for the layout
  * @returns a boolean wether the layoutId has a active projection, IE will run a layout transform
  */
-function useHasLayoutProjection(layoutId:string) {
+function useHasLayoutProjection(layoutId?: string) {
+    return React.useMemo(() => {
+        if (!layoutId) {
+            return false
+        }
         const root = rootProjectionNode.current;
         if (!root)
             return false;
-        return !!layoutId &&  findByIDRecursive(root, layoutId);    
+        return !!layoutId && findByIDRecursive(root, layoutId);
+    }, [layoutId])
 }
 
 export { useHasLayoutProjection };

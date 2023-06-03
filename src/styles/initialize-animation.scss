@@ -2,9 +2,14 @@
   &.before-animate {
     will-change: clip-path;
     clip-path: ellipse(290px 290px at 0% 0%);
-    transition: clip-path .75s;
+    transition: clip-path 0.75s;
     &.on-animate {
       clip-path: ellipse(max(120vw, 120vh) max(120vw, 120vh) at 0% 0%); // needs to overshoot the ellipse a bit
+    }
+
+    // turn off backdrop filters, these cause the background animation to flicker    
+    & .dog-details-wrapper, & .close-btn, & .menu, & .cta-box {      
+      backdrop-filter: initial !important; 
     }
   }
 }

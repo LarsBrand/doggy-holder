@@ -2,6 +2,7 @@ import * as React from "react"
 import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { AnimatePresence, motion, useHasLayoutProjection } from '../motion/packages/framer-motion/src'
+import { useMotionLayoutID, useMotionProps } from "../hooks/useMotionProps"
 
 export const data = graphql`
       query allDogImages{
@@ -49,7 +50,7 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {
   )
 }
 
-const spring = {
+const springConst = {
   type: "spring",
   stiffness: 700,
   damping: 30
@@ -57,20 +58,25 @@ const spring = {
 
 
 const DogListItem: React.FC<{ i: Queries.ContentfulPlaceholderImage, index: number }> = ({ i, index }) => {
-  const hasLayout = React.useMemo(()=>useHasLayoutProjection(i.id),[i.id])
-  
+  const id = useMotionLayoutID(i.id)
+  const hasLayout = useHasLayoutProjection(id)
+  const spring = useMotionProps(springConst)
+  const animate = useMotionProps({ scale: 1, transition: { delay: index * .07 } })
+  const initialMotion = useMotionProps(hasLayout ? undefined : { scale: 0 })
+
+
   return (
     <motion.div
-      layout
-      layoutId={i.id}
+      layout={id ? true : false}
+      layoutId={id}
       key={`dogs_${i.id}`}
       className="dog-details-wrapper list"
       style={{ zIndex: hasLayout ? '200' : '100' }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 1.05 }}
-      initial={hasLayout? undefined : {scale:0}}
-      animate={{scale:1, transition: {delay:index *.07}}}    
-      transition={spring}  
+      initial={initialMotion}
+      animate={animate}
+      transition={spring}
     >
       <Link to={`/dogs/${i.id}`}>
         {i.image?.gatsbyImageData && <GatsbyImage image={i.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}
