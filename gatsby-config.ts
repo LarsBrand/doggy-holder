@@ -19,6 +19,7 @@ const config: GatsbyConfig = {
   plugins: [
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-sass",
+    "gatsby-plugin-netlify",
     {
       resolve: `gatsby-source-contentful`,
       options: {
