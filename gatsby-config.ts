@@ -13,7 +13,7 @@ if (!process.env.CONTENTFUL_ACCESS_TOKEN) {
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `doggy-holder`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://doggyholder.netlify.app`
   },
   graphqlTypegen: true,
   plugins: [

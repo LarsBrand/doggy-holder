@@ -1,10 +1,10 @@
 # 🐶 Doggy holder
-<h2 align="center"> Source for my pet project.</h2>      
-Inspired by [place kitten](https:/placekitten.com). A service that provides placeholder images  of cats.
+Source for my pet project.     
+Inspired by [place kitten](https://placekitten.com). A service that provides placeholder images of cats.
 
+## hosted on
+view on [netlify](https://doggyholder.netlify.app/).
 
 ## build with 
-<h3 align="center">
-  Gatsby Minimal TypeScript Starter
-</h3>
+Gatsby Minimal TypeScript Starter
 
