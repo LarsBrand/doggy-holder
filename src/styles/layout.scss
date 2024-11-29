@@ -149,7 +149,7 @@ hr {
     }
 
     .cta-container {
-        margin:0;
+        margin:1rem;
         margin-top: $baseFontSize;
     }
     .content {
@@ -163,7 +163,8 @@ hr {
         padding: $baseFontSize;
         
         & h1 {
-            margin-top: calc(-1 * $baseFontSize * $goldenRatio * $goldenRatio * $goldenRatio * $goldenRatio * $goldenRatio);
+            margin-top: calc(-1 * $baseFontSize * $goldenRatio * $goldenRatio * $goldenRatio * $goldenRatio);
+            font-size: calc($baseFontSize * $goldenRatio * $goldenRatio * $goldenRatio);
             margin-left: 200px;
         }
     }

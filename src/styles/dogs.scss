@@ -3,14 +3,14 @@ $maxWidth: 80vw;
 
 .dog-details-wrapper {
   border: 1px solid var(--primary-color-background-border);
-  border-radius: 6px;
+  border-radius: 3px;
   background-color: var(--primary-color-background-border);
-  padding: 6px;
+  padding: 1px;
   display: inline-block;
   max-width: $maxWidth;
   z-index: 100;
   position: relative;
-  backdrop-filter:blur(5px);
+  backdrop-filter: blur(5px);
   transition: backdrop-filter 0.3s;
 
   color: $text-color-secondary;
@@ -18,33 +18,54 @@ $maxWidth: 80vw;
   font-size: $baseFontSize * $goldenRatio;
   font-weight: 300;
   text-align: center;
-  
+
   & h2 {
-    margin:$baseFontSize;
+    margin: $baseFontSize;
     margin-top: 0;
   }
 
   & p {
     margin-top: 0;
-    margin:$baseFontSize;
+    margin: $baseFontSize;
   }
 
 
   &.home {
     margin: 4px;
-    z-index: 200;    
+    z-index: 200;
   }
 
   &.list {
-    margin: 2px;
+    margin: 0px;
     z-index: 100;
-     
-    & *{
+
+    & * {
       max-width: 250px;
       max-height: 250px;
     }
+
+    .gatsby-image-wrapper {
+      img {
+        transition: transform 100ms ease-out, filter 100ms ease-out;
+      }
+
+      &:hover img {
+        filter: brightness(1.25);
+        transform: scale(1.25);
+      }
+
+    }
   }
 }
+
+@media (max-width: $break-max-width) {
+  .dog-details-wrapper {
+    max-width: 100%;
+  }
+
+}
+
+
 
 .dog-details {
   width: auto;
@@ -52,7 +73,7 @@ $maxWidth: 80vw;
   display: inline-block;
 
   & img {
-    border-radius: 5px;
+    border-radius: 2px;
     width: auto;
     max-height: $maxHeigt;
     max-width: 100%;
@@ -64,24 +85,25 @@ $maxWidth: 80vw;
 .dog-list-container {
   display: inline-flex;
   flex-wrap: wrap;
-  align-content: center; 
+  align-content: center;
   justify-content: center;
   overflow: hidden;
   padding-right: 2rem;
 }
 
-.dog-list-spacer{
- display: inline-block;
- width: 200px;
- height: 245px ;
+.dog-list-spacer {
+  display: inline-block;
+  width: 200px;
+  height: 245px;
 }
 
 @media (max-width: $break-max-width) {
   .dog-list-container {
     padding: 0
-  }  
-  .dog-list-spacer{  
+  }
+
+  .dog-list-spacer {
     width: 100%;
     height: $baseFontSize;
-  } 
+  }
 }

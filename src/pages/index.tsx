@@ -5,7 +5,6 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { motion, useHasLayoutProjection } from '../motion/packages/framer-motion/src'
 import { useMotionLayoutID, useMotionProps } from "../hooks/useMotionProps";
 import { HTMLHead } from "../components/HTMLHead";
-import { Button } from "../components/button";
 import { CopyLinkButton } from "../components/CopyLinkButton";
 
 export const data = graphql`
@@ -82,7 +81,7 @@ const PlaceholderUrlBox: React.FC<{ href: string }> = ({ href }) => {
         <br />
         Image <b>width</b> & <b>height</b> can be set in the url.
         <br />
-        changing the height will give different images.
+        Changing the height will give different images.
       </div>
       <div className="action">
         <div style={{ display: 'inline-block' }}>Like:</div>

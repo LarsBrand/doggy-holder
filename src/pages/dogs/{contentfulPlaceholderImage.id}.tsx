@@ -4,7 +4,7 @@ import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
 import { motion } from '../../motion/packages/framer-motion/src'
 import { useMotionLayoutID, useMotionProps } from '../../hooks/useMotionProps';
 import { HTMLHead } from '../../components/HTMLHead';
-import { LinkButton } from '../../components/button';
+import { LinkButton } from '../../components/Button';
 
 
 export const data = graphql`

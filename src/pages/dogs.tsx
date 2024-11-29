@@ -72,14 +72,12 @@ const DogListItem: React.FC<{ i: Queries.ContentfulPlaceholderImage, index: numb
       key={`dogs_${i.id}`}
       className="dog-details-wrapper list"
       style={{ zIndex: hasLayout ? '200' : '100' }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 1.05 }}
       initial={initialMotion}
       animate={animate}
       transition={spring}
     >
       <Link to={`/dogs/${i.id}`}>
-        {i.image?.gatsbyImageData && <GatsbyImage image={i.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />}
+        {i.image?.gatsbyImageData && <GatsbyImage image={i.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '2px' }} />}
         <link rel="preload" as="image" href={i.image?.publicUrl} />
       </Link>
     </motion.div>

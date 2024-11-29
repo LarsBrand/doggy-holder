@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "./button"
+import { Button } from "./Button"
 
 
 export const CopyLinkButton: React.FC<{ href: string }> = ({ href }) => {
