@@ -1,5 +1,5 @@
 import * as React from "react"
-import { HeadFC, Link, PageProps, graphql } from "gatsby"
+import { HeadFC, PageProps } from "gatsby"
 import { AboutHeader } from "../components/AboutHeader";
 import { HTMLHead } from "../components/HTMLHead";
 

@@ -46,7 +46,6 @@ hr {
         padding: 0.5rem;
         text-decoration: none;
         text-transform: uppercase;
-        opacity: 0.5;
         transition: opacity 0.2s;
         &:after {
             display: block;
@@ -56,7 +55,8 @@ hr {
             transition: transform 250ms ease-in-out;
         }
         &:hover {
-            opacity: 1;
+            color: $text-color-secondary-highlight;
+            text-decoration: underline;
         }
 
         &.active {
@@ -88,6 +88,7 @@ hr {
     display: inline-block;
     
     & .header {
+        text-align: left;
         color: $text-color-secondary;
         text-shadow: 1px 1px 1px #333;
         font-size: $baseFontSize * $goldenRatio;      
@@ -100,6 +101,9 @@ hr {
         display: flex;
         align-items: baseline;
         flex-direction: row;
+    }
+    & b{
+        font-weight: bold;
     }
 } 
 

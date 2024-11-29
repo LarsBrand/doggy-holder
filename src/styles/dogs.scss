@@ -61,33 +61,6 @@ $maxWidth: 80vw;
   }
 }
 
-.close-btn {
-  font-family: monospace;
-  z-index: 1099;  
-  cursor: pointer;  
-  line-height: 1;
-  backdrop-filter: blur(1px);
-  background: #ffffffaa;
-  color: #333;
-  padding: 0.5rem 0.7rem;  
-  text-decoration: none;
-  box-shadow: inset 0 0 3px 1px #000000aa;
-  text-shadow: none;
-  border-radius: 5px;  
-  right: 9px;
-  top: 9px;
-  position: absolute;
-  transition: background-color 0.3s, box-shadow 0.3s, font-weight 0.1s, backdrop-filter 0.3s;
-  &:hover {
-    backdrop-filter: blur(3px);
-    background: #ffffffc5;
-    font-weight: bold;
-    box-shadow: inset 0 0 1px 1px #000000ee;
-    color:#000000;
-    transition: background-color 0.1s, box-shadow 0.1s, font-weight 0.1s;
-  }
-}
-
 .dog-list-container {
   display: inline-flex;
   flex-wrap: wrap;

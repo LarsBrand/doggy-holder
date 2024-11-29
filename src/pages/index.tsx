@@ -5,6 +5,8 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { motion, useHasLayoutProjection } from '../motion/packages/framer-motion/src'
 import { useMotionLayoutID, useMotionProps } from "../hooks/useMotionProps";
 import { HTMLHead } from "../components/HTMLHead";
+import { Button } from "../components/button";
+import { CopyLinkButton } from "../components/CopyLinkButton";
 
 export const data = graphql`
       query fourImages{
@@ -49,7 +51,7 @@ const HomeDoggyImage: React.FC<{
   const animate = useMotionProps({ scale: 1, transition: { delay: index * .15 } })
   const initialMotion = useMotionProps(hasLayout ? undefined : { scale: 0 })
 
-  return <motion.div    
+  return <motion.div
     layout={id ? true : false}
     layoutId={id}
     key={`index_${i.value.id}`}
@@ -74,12 +76,20 @@ const PlaceholderUrlBox: React.FC<{ href: string }> = ({ href }) => {
   return <div className="cta-container">
     <div className='cta-box'>
       <div className="header">
-        provide the image width & height in the url
+        This link will give you a (pseudo-)random image of dog.
+        <br />
+        These can be used as a placeholder in code samples.
+        <br />
+        Image <b>width</b> & <b>height</b> can be set in the url.
+        <br />
+        changing the height will give different images.
       </div>
       <div className="action">
         <div style={{ display: 'inline-block' }}>Like:</div>
         <div className="highlight">
           <code>{href}<span className="colored" >300</span>/<span className="colored">400</span></code>
+          &nbsp;
+          <CopyLinkButton href={`${href}300/400`} />
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
     }
 
     // turn off backdrop filters, these cause the background animation to flicker    
-    & .dog-details-wrapper, & .close-btn, & .menu, & .cta-box {      
+    & .dog-details-wrapper, & .btn, & .menu, & .cta-box {      
       backdrop-filter: initial !important; 
     }
   }
