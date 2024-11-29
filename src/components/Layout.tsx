@@ -1,14 +1,11 @@
 import React from "react"
 import '../styles/main.scss'
 import { DoggyCompanion } from "./DoggyCompanion"
-import { useRandomBackgroundColor } from "../hooks/useRandomBackgroundColor"
 import { Link } from "gatsby"
 import { motion } from '../motion/packages/framer-motion/src'
 import { InitializeAnmationContextProvider } from "./InitializeAnimationContext"
 
 export const Layout: React.FC<{ children: any }> = ({ children }) => {
-    useRandomBackgroundColor()
-
     return (
         <div className="body before-animate">
             <InitializeAnmationContextProvider>

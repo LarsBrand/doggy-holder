@@ -4,6 +4,7 @@ import { WelcomeHeader } from "../components/WelcomeHeader";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { motion, useHasLayoutProjection } from '../motion/packages/framer-motion/src'
 import { useMotionLayoutID, useMotionProps } from "../hooks/useMotionProps";
+import { HTMLHead } from "../components/HTMLHead";
 
 export const data = graphql`
       query fourImages{
@@ -30,9 +31,7 @@ export const data = graphql`
     `
 
 export const Head: HeadFC = () => {
-  return <>
-    <title>Doggy-Holder 🐶</title>
-  </>
+  return <HTMLHead />
 }
 const springConst = {
   type: "spring",

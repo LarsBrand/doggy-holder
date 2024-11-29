@@ -3,6 +3,7 @@ import { HeadFC, Link, PageProps, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { AnimatePresence, motion, useHasLayoutProjection } from '../motion/packages/framer-motion/src'
 import { useMotionLayoutID, useMotionProps } from "../hooks/useMotionProps"
+import { HTMLHead } from "../components/HTMLHead"
 
 export const data = graphql`
       query allDogImages{
@@ -29,9 +30,8 @@ export const data = graphql`
     `
 
 export const Head: HeadFC = () => {
-  return <>
-    <title>Doggy-Holder 🐶 All dogs</title>
-  </>
+  return <HTMLHead title={'Doggy-Holder 🐶 All dogs'} />
+
 }
 
 const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data }) => {

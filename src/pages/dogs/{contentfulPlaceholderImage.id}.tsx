@@ -3,6 +3,7 @@ import '../../styles/main.scss'
 import { graphql, HeadFC, HeadProps, Link, PageProps } from 'gatsby';
 import { motion } from '../../motion/packages/framer-motion/src'
 import { useMotionLayoutID, useMotionProps } from '../../hooks/useMotionProps';
+import { HTMLHead } from '../../components/HTMLHead';
 
 
 export const data = graphql`
@@ -74,9 +75,7 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
 
 
 export const Head: HeadFC<Queries.Query> = ({ data: { contentfulPlaceholderImage } }: HeadProps<Queries.Query>) => {
-  return <>
-    <title>Doggy-Holder 🐶 {contentfulPlaceholderImage?.subject} </title>
-  </>
+  return <HTMLHead title={'Doggy-Holder 🐶 {contentfulPlaceholderImage?.subject}'} />
 }
 
 export default Page;

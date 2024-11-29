@@ -37,7 +37,7 @@ const hslToRgb = (input: HSL): RGB => {
 
 const hexa = (n: number): string => n.toString(16).padStart(2, '0')
 const toCssColor = ({ r, g, b }: RGB) => `#${hexa(r)}${hexa(g)}${hexa(b)}`
-const toContrastColor = ({ r, g, b }: RGB) => (r*0.199 + g*0.587 + b*0.114) < 70 ? '#ffffff':'#000000'
+const toContrastColor = ({ r, g, b }: RGB) => (r * 0.199 + g * 0.587 + b * 0.114) < 70 ? '#ffffff' : '#000000'
 
 export const useRandomBackgroundColor = () => {
     React.useEffect(() => {
@@ -51,4 +51,19 @@ export const useRandomBackgroundColor = () => {
         document?.documentElement.style.setProperty('--primary-color-background-border', toCssColor(hslToRgb(hslPrimaryBackgroundBorder)) + '44')
         document?.documentElement.style.setProperty('--primary-text-shadow-color', toContrastColor(hslToRgb(hslPrimaryLight)))
     }, [])
+}
+
+// ScriptRandomBackgroundColor renders a regualar script tag.
+// it's used to set the background color before react hydrates/runs
+// it's a copy of the hook above, including functions being called
+// usage: render in <head> tag.
+export const ScriptRandomBackgroundColor = () => {
+    return <script>
+        {`
+          if(!window.didSetColor){
+            var hslToRgb=r=>{let{h:o,s:e,l:t}=r,l,s,h;function a(r,o,e){return(e<0&&(e+=1),e>1&&(e-=1),e<1/6)?r+(o-r)*6*e:e<.5?o:e<2/3?r+(o-r)*(2/3-e)*6:r}if(0===e)l=s=h=t;else{let n=t<.5?t*(1+e):t+e-t*e,$=2*t-n;l=a($,n,o+1/3),s=a($,n,o),h=a($,n,o-1/3)}return{r:Math.round(255*l),g:Math.round(255*s),b:Math.round(255*h)}},hexa=r=>r.toString(16).padStart(2,"0"),toCssColor=({r,g:o,b:e})=>\`#\${hexa(r)}\${hexa(o)}\${hexa(e)}\`,toContrastColor=({r,g:o,b:e})=>.199*r+.587*o+.114*e<70?"#ffffff":"#000000",hue=Math.random(),hue2=hue>.5?hue-.2:hue+.2,hslPrimary={h:hue2,s:.8,l:.2},hslPrimaryLight={h:hue,s:1,l:.37},hslPrimaryBackgroundBorder={h:hue,s:.3,l:.25};document?.documentElement.style.setProperty("--primary-color",toCssColor(hslToRgb(hslPrimary))),document?.documentElement.style.setProperty("--primary-color-light",toCssColor(hslToRgb(hslPrimaryLight))),document?.documentElement.style.setProperty("--primary-color-background-border",toCssColor(hslToRgb(hslPrimaryBackgroundBorder))+"44"),document?.documentElement.style.setProperty("--primary-text-shadow-color",toContrastColor(hslToRgb(hslPrimaryLight)));
+          }
+          window.didSetColor = true
+        `}
+    </script>
 }
