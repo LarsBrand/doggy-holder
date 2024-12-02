@@ -10,7 +10,6 @@ $maxWidth: 80vw;
   max-width: $maxWidth;
   z-index: 100;
   position: relative;
-  backdrop-filter: blur(5px);
   transition: backdrop-filter 0.3s;
 
   color: $text-color-secondary;
@@ -43,8 +42,11 @@ $maxWidth: 80vw;
       max-width: 250px;
       max-height: 250px;
     }
+  }
 
+  &.home, &.list{
     .gatsby-image-wrapper {
+      border-radius: 2px;
       img {
         transition: transform 100ms ease-out, filter 100ms ease-out;
       }
@@ -57,15 +59,6 @@ $maxWidth: 80vw;
     }
   }
 }
-
-@media (max-width: $break-max-width) {
-  .dog-details-wrapper {
-    max-width: 100%;
-  }
-
-}
-
-
 
 .dog-details {
   width: auto;
@@ -87,8 +80,7 @@ $maxWidth: 80vw;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  overflow: hidden;
-  padding-right: 2rem;
+  overflow: hidden; 
 }
 
 .dog-list-spacer {
@@ -98,12 +90,29 @@ $maxWidth: 80vw;
 }
 
 @media (max-width: $break-max-width) {
+  .details-page{
+    margin-top:130px;
+  }
   .dog-list-container {
     padding: 0
   }
 
   .dog-list-spacer {
-    width: 100%;
-    height: $baseFontSize;
+    height: 140px;
+  }
+
+  .dog-details-wrapper {
+    max-width: 100%;
+
+    &.list {
+      margin: 0px;
+      z-index: 100;
+  
+      & * {
+        max-width: 175px;
+        max-height: 175px;
+      }
+    }
   }
 }
+

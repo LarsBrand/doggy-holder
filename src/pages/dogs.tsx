@@ -77,7 +77,7 @@ const DogListItem: React.FC<{ i: Queries.ContentfulPlaceholderImage, index: numb
       transition={spring}
     >
       <Link to={`/dogs/${i.id}`}>
-        {i.image?.gatsbyImageData && <GatsbyImage image={i.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '2px' }} />}
+        {i.image?.gatsbyImageData && <GatsbyImage image={i.image.gatsbyImageData} alt={"some dog"} />}
         <link rel="preload" as="image" href={i.image?.publicUrl} />
       </Link>
     </motion.div>

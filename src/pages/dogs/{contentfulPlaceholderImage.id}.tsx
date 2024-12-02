@@ -4,7 +4,7 @@ import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
 import { motion } from '../../motion/packages/framer-motion/src'
 import { useMotionLayoutID, useMotionProps } from '../../hooks/useMotionProps';
 import { HTMLHead } from '../../components/HTMLHead';
-import { LinkButton } from '../../components/Button';
+import { CloseButton } from '../../components/CloseButton';
 
 
 export const data = graphql`
@@ -41,7 +41,7 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
   const spring = useMotionProps(springConst)
 
   return (
-    <main>
+    <main className='details-page'>
       <div style={{ overflow: 'hidden' }}>
         <div style={{ textAlign: 'center' }}>
           {contentfulPlaceholderImage?.image?.gatsbyImageData && (
@@ -53,7 +53,7 @@ const Page = ({ data: { contentfulPlaceholderImage } }: PageProps<Queries.Query>
               className='dog-details-wrapper'
               style={{ position: 'relative', maxHeight: 'calc(100vh - 10px)' }}
             >
-              <div style={{ position: 'absolute', right: '1rem', top:'1rem' }}><LinkButton to="/dogs" title="close" text={'✖'} /></div>
+              <div style={{ position: 'absolute', right: '1rem', top:'1rem' }}><CloseButton /></div>
               <motion.div className='dog-details'>
                 <img
                   src={contentfulPlaceholderImage.image.publicUrl}

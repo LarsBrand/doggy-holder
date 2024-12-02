@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-interface LinkButtonProps { text: string, title: string, to: string }
+interface LinkButtonProps { text: string | React.ReactNode, title: string, to: string }
 export const LinkButton: React.FC<LinkButtonProps> = (props) => {
   return <Link to={props.to} className="btn" title={props.title}>
     <div className="btn-inner">{props.text}</div>

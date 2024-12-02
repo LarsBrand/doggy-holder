@@ -29,18 +29,18 @@ export const SharedHeader: React.FC<HeaderProps> = ({ title, subTitle, closer })
             <motion.h1 {...motions1}>
                 {title}
             </motion.h1>
-            <motion.p
+            <motion.div
                 {...motions2}
                 className="lead">
                 {subTitle}
-            </motion.p>
+            </motion.div>
             <hr />
-            <motion.p
+            <motion.div
                 {...motions3}
                 className="closer"
             >
                 {closer}
-            </motion.p>
+            </motion.div>
         </div>
     </motion.div>
 

@@ -39,15 +39,14 @@
 
 .btn-copy {
     .tooltip {
-        backdrop-filter: blur(5px);
         background-color: var(--primary-color-background-border);
         border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 2px 4px;
+        padding: 2px 4px 4px 4px;
         font-size: $baseFontSize * $goldenRatio;
         text-wrap: nowrap;
-        position: absolute;
-        right: 0;
-        bottom: -1.5rem;
+        position: absolute;        
+        left:-50%;
+        top: -2rem;
         visibility: hidden;
         display: none;
     }

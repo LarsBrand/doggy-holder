@@ -54,16 +54,14 @@ const HomeDoggyImage: React.FC<{
     layout={id ? true : false}
     layoutId={id}
     key={`index_${i.value.id}`}
-    className="dog-details-wrapper home"
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 1.05 }}
+    className="dog-details-wrapper home" 
     initial={initialMotion}
     animate={animate}
     transition={spring}
   >
     <Link to={`/dogs/${i.value.id}`}>
       {i.value.image?.gatsbyImageData && <>
-        <GatsbyImage image={i.value.image.gatsbyImageData} alt={"some dog"} style={{ borderRadius: '5px' }} />
+        <GatsbyImage image={i.value.image.gatsbyImageData} alt={"some dog"} />
         <link rel="preload" as="image" href={i.value.image?.publicUrl} />
       </>
       }
@@ -84,7 +82,7 @@ const PlaceholderUrlBox: React.FC<{ href: string }> = ({ href }) => {
         Changing the height will give different images.
       </div>
       <div className="action">
-        <div style={{ display: 'inline-block' }}>Like:</div>
+        <div style={{ display: 'inline-block' }}>IE:</div>
         <div className="highlight">
           <code>{href}<span className="colored" >300</span>/<span className="colored">400</span></code>
           &nbsp;
@@ -104,7 +102,7 @@ const IndexPage: React.FC<PageProps<Queries.Query>> = ({ data, location }) => {
     <main >
       <WelcomeHeader />
       <PlaceholderUrlBox href={location?.href} />
-      <div style={{ display: "flex", flexWrap: 'wrap', justifyContent: 'space-evenly', overflowX: 'hidden', overflowY: 'visible', overflow: 'visible' }}>
+      <div style={{ display: "flex", flexWrap: 'wrap', justifyContent: 'center', overflowX: 'hidden', overflowY: 'visible', overflow: 'visible' }}>
         {randomImages.map((i, index) => (
           <HomeDoggyImage key={i.value.id} i={i} index={index} />
         )
